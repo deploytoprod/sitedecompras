@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{%block titulo%} Lista de Posts {%endblock%}
+
+{% block conteudo %}
+<h1>Lista de posts:</h1>
+<ul>
+	{% for post in posts %}
+	<li>
+		<a href='/blog/post/{{post.id}}.python'>{{post.title}}</a> - {{post.post|truncatewords:6}}
+	</li>
+	{% endfor %}
+</ul>
+
+{% block post %}{%endblock%}
+
+{% endblock %} <!-- conteudo -->

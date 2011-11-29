@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ post.title }}{% endblock %}
+
+{% block conteudo %}
+
+{%if teve_comentario %}
+	<p><strong>Obrigado por comentar!</strong></p>
+{% endif %}
+
+<h1>{{post.title}}</h1>
+<p>{{post.post}}</p>
+
+<h2>Comentários</h2>
+<ul>
+{% for c in comments %}
+	<li>{{c.comment}}</li> 
+{%endfor%}	
+</ul>
+
+<h2>Comente também</h2>
+<form method="post" action="{% url blog.views.post id=post.id %}">
+    {% csrf_token %}
+    <p>
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" placeholder="Seu email"/>
+    </p>
+
+
+    <p>
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome" placeholder="Seu nome"/>
+    </p>
+
+
+    <p>
+    <label for="comentario">Comentario:</label>
+    <textarea name="comentario" id="comentario" placeholder="Seu comentario"></textarea>
+    </p>
+    <input type="submit" />
+</form>
+
+
+{% endblock %} <!-- post -->
