@@ -3,6 +3,7 @@
 {%block titulo%} Lista de Posts {%endblock%}
 
 {% block conteudo %}
+{{currentUrl}}
 <h1>Lista de posts:</h1>
 <ul>
 	{% for post in posts %}

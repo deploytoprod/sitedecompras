@@ -2,6 +2,7 @@ from models import Post, Comment
 from django.shortcuts import render #com esse cara nao preciso retornar o HttpResponse e nem importar o get_template nem o HttpResponse, nem o Template, nem o Context (linha acima), vou fazer no posts pra ver (BACANA!)
 
 def posts(request):
+	currentUrl = request.get_full_path()
 	posts = Post.objects.all()
 	return render(request, 'blog/posts.html', locals())
 
